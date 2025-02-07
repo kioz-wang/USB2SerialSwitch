@@ -52,10 +52,10 @@ class Switch:
         else:
             self.on()
 
-    def reset(self, delay: float = 1):
-        self.off()
+    def reset(self, delay: float = 1, off: bool = False):
+        self.on() if off else self.off()
         time.sleep(delay)
-        self.on()
+        self.off() if off else self.on()
 
 
 if __name__ == "__main__":
@@ -69,13 +69,15 @@ if __name__ == "__main__":
     action.add_parser("on")
     action.add_parser("off")
     action.add_parser("toggle")
-    action.add_parser("reset").add_argument(
+    action_reset = action.add_parser("reset")
+    action_reset.add_argument(
         "-d",
         "--delay",
         help="Delay in seconds",
         type=float,
         default=1,
     )
+    action_reset.add_argument("-o", "--off", help="Reset to off", action="store_true")
     args = parser.parse_args()
 
     switch = Switch(args.port, args.baudrate, args.log)
@@ -86,4 +88,4 @@ if __name__ == "__main__":
     elif args.action == "toggle":
         switch.toggle()
     elif args.action == "reset":
-        switch.reset(args.delay)
+        switch.reset(args.delay, args.off)
