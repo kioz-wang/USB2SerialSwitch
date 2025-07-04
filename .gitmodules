@@ -1,0 +1,6 @@
+[submodule "ch343ser_linux"]
+	path = ch343ser_linux
+	url = git@github.com:WCHSoftGroup/ch343ser_linux.git
+[submodule "ch341ser_linux"]
+	path = ch341ser_linux
+	url = git@github.com:WCHSoftGroup/ch341ser_linux.git
