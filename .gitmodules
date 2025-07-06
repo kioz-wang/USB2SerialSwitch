@@ -4,3 +4,6 @@
 [submodule "ch341ser_linux"]
 	path = ch341ser_linux
 	url = git@github.com:WCHSoftGroup/ch341ser_linux.git
+[submodule "tio"]
+	path = tio
+	url = git@github.com:tio/tio.git
