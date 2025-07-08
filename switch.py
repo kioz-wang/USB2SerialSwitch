@@ -5,15 +5,17 @@ import time
 from typing import Optional, Set
 import serial
 from datetime import datetime
-from enum import Enum, StrEnum, auto
+from enum import Enum, auto
 import sys
 
 
-class Color(StrEnum):
+class Color(Enum):
     Debug = "\033[0;90m"
     Info = "\033[0;32m"
     Time = "\033[0;2;3;4m"
     Reset = "\033[0m"
+    def __str__(self) -> str:
+        return self.value
 
 
 class OpCode(Enum):
